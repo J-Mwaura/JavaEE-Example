@@ -1,3 +1,11 @@
+- James Mwaura
+
+- Java EE app
+
+- www.soekm.com
+
+- atjkm@yahoo.com
+
 This is a Java EE application. It is an example of a blog web system that demonstrates major functionarities of 
 Java EE. I developed this app a while ago using Java 7 but it runs on Java 8 as well.
 The program uses MySQL database (sql scripts with create and inset statemens are provided).
