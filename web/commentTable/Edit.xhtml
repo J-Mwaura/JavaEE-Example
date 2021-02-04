@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCommentTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCommentTableLabel_commentId}" for="commentId" />
+                    <h:inputText id="commentId" value="#{commentTableController.selected.commentId}" title="#{bundle.EditCommentTableTitle_commentId}" required="true" requiredMessage="#{bundle.EditCommentTableRequiredMessage_commentId}"/>
+                    <h:outputLabel value="#{bundle.EditCommentTableLabel_commentBody}" for="commentBody" />
+                    <h:inputText id="commentBody" value="#{commentTableController.selected.commentBody}" title="#{bundle.EditCommentTableTitle_commentBody}" required="true" requiredMessage="#{bundle.EditCommentTableRequiredMessage_commentBody}"/>
+                    <h:outputLabel value="#{bundle.EditCommentTableLabel_dateCreated}" for="dateCreated" />
+                    <h:inputText id="dateCreated" value="#{commentTableController.selected.dateCreated}" title="#{bundle.EditCommentTableTitle_dateCreated}" required="true" requiredMessage="#{bundle.EditCommentTableRequiredMessage_dateCreated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCommentTableLabel_url}" for="url" />
+                    <h:inputText id="url" value="#{commentTableController.selected.url}" title="#{bundle.EditCommentTableTitle_url}" />
+                    <h:outputLabel value="#{bundle.EditCommentTableLabel_personId}" for="personId" />
+                    <h:selectOneMenu id="personId" value="#{commentTableController.selected.personId}" title="#{bundle.EditCommentTableTitle_personId}" required="true" requiredMessage="#{bundle.EditCommentTableRequiredMessage_personId}">
+                        <f:selectItems value="#{customerController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCommentTableLabel_articleiId}" for="articleiId" />
+                    <h:selectOneMenu id="articleiId" value="#{commentTableController.selected.articleiId}" title="#{bundle.EditCommentTableTitle_articleiId}" required="true" requiredMessage="#{bundle.EditCommentTableRequiredMessage_articleiId}">
+                        <f:selectItems value="#{articleTableController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{commentTableController.update}" value="#{bundle.EditCommentTableSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCommentTableViewLink}"/>
+                <br />
+                <h:commandLink action="#{commentTableController.prepareList}" value="#{bundle.EditCommentTableShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCommentTableIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

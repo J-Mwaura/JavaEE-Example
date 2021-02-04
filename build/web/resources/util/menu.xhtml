@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>               
+        <h:form styleClass="jsfcrud_list_form">
+                <div id="allArticles">
+                    <h3>total news = #{articleController.totalArticles()}</h3>
+            
+                    <h:dataTable var="item" value="#{articleController.items}">
+                <h:column>
+                    <h:commandLink action="#{articleController.prepareListOnSelectedArticle}" value="#{article.articleTitle}">
+                        <f:setPropertyActionListener target="#{articleController.selectedArticleId}" 
+                                                 value="#{item.articleiId}" />
+                        <p:graphicImage value="#{imageStreamer.image}" 
+                                            height="100" width="100" style="float: left; display: block;">
+                                <f:param name="id" value="#{item.articleiId}"/></p:graphicImage>
+                            
+                    </h:commandLink>
+                    </h:column>
+                     <br/>
+            </h:dataTable> 
+        </div>
+            </h:form>
+    </cc:implementation>
+</html>
+

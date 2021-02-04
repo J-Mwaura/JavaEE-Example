@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Session expired</title>
+        <meta http-equiv="refresh" content="${pageContext.session.maxInactiveInterval};url=index.xhtml"/>
+
+    </head>
+    <body>
+        <h1>Session expired</h1>
+        <h3>You will be redirected to login page</h3>
+        <p><a href="#{request.contextPath}/index.xhtml">Click here if you are not redirected in 5 seconds</a>.</p>
+    </body>
+</html>

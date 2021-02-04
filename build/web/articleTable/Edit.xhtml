@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditArticleTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_articleiId}" for="articleiId" />
+                    <h:inputText id="articleiId" value="#{articleTableController.selected.articleiId}" title="#{bundle.EditArticleTableTitle_articleiId}" required="true" requiredMessage="#{bundle.EditArticleTableRequiredMessage_articleiId}"/>
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_articleTitle}" for="articleTitle" />
+                    <h:inputText id="articleTitle" value="#{articleTableController.selected.articleTitle}" title="#{bundle.EditArticleTableTitle_articleTitle}" required="true" requiredMessage="#{bundle.EditArticleTableRequiredMessage_articleTitle}"/>
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_articlePreface}" for="articlePreface" />
+                    <h:inputText id="articlePreface" value="#{articleTableController.selected.articlePreface}" title="#{bundle.EditArticleTableTitle_articlePreface}" required="true" requiredMessage="#{bundle.EditArticleTableRequiredMessage_articlePreface}"/>
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_articleBody}" for="articleBody" />
+                    <h:inputTextarea rows="4" cols="30" id="articleBody" value="#{articleTableController.selected.articleBody}" title="#{bundle.EditArticleTableTitle_articleBody}" required="true" requiredMessage="#{bundle.EditArticleTableRequiredMessage_articleBody}"/>
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_views}" for="views" />
+                    <h:inputText id="views" value="#{articleTableController.selected.views}" title="#{bundle.EditArticleTableTitle_views}" />
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_imageMain}" for="imageMain" />
+                    <p:graphicImage value="/image?id=#{articleTableController.selected.articleId}" title="#{bundle.EditArticleTableTitle_imageMain}"></p:graphicImage>
+                    
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_image}" for="image" />
+                    <h:inputText id="image" value="#{articleTableController.selected.image}" title="#{bundle.EditArticleTableTitle_image}" />
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_dateCreated}" for="dateCreated" />
+                    <h:inputText id="dateCreated" value="#{articleTableController.selected.dateCreated}" title="#{bundle.EditArticleTableTitle_dateCreated}" required="true" requiredMessage="#{bundle.EditArticleTableRequiredMessage_dateCreated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_dateUpdated}" for="dateUpdated" />
+                    <h:inputText id="dateUpdated" value="#{articleTableController.selected.dateUpdated}" title="#{bundle.EditArticleTableTitle_dateUpdated}" required="true" requiredMessage="#{bundle.EditArticleTableRequiredMessage_dateUpdated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_personId}" for="personId" />
+                    <h:selectOneMenu id="personId" value="#{articleTableController.selected.personId}" title="#{bundle.EditArticleTableTitle_personId}" required="true" requiredMessage="#{bundle.EditArticleTableRequiredMessage_personId}">
+                        <f:selectItems value="#{personController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditArticleTableLabel_articlecategoryId}" for="articlecategoryId" />
+                    <h:selectOneMenu id="articlecategoryId" value="#{articleTableController.selected.articlecategoryId}" title="#{bundle.EditArticleTableTitle_articlecategoryId}" required="true" requiredMessage="#{bundle.EditArticleTableRequiredMessage_articlecategoryId}">
+                        <f:selectItems value="#{categoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{articleTableController.update}" value="#{bundle.EditArticleTableSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditArticleTableViewLink}"/>
+                <br />
+                <h:commandLink action="#{articleTableController.prepareList}" value="#{bundle.EditArticleTableShowAllLink}" immediate="true"/>
+                <br />
+                <br/>
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditArticleTableIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

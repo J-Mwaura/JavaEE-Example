@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCommentTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCommentTableLabel_commentId}"/>
+                    <h:outputText value="#{commentTableController.selected.commentId}" title="#{bundle.ViewCommentTableTitle_commentId}"/>
+                    <h:outputText value="#{bundle.ViewCommentTableLabel_commentBody}"/>
+                    <h:outputText value="#{commentTableController.selected.commentBody}" title="#{bundle.ViewCommentTableTitle_commentBody}"/>
+                    <h:outputText value="#{bundle.ViewCommentTableLabel_dateCreated}"/>
+                    <h:outputText value="#{commentTableController.selected.dateCreated}" title="#{bundle.ViewCommentTableTitle_dateCreated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCommentTableLabel_url}"/>
+                    <h:outputText value="#{commentTableController.selected.url}" title="#{bundle.ViewCommentTableTitle_url}"/>
+                    <h:outputText value="#{bundle.ViewCommentTableLabel_personId}"/>
+                    <h:outputText value="#{commentTableController.selected.personId}" title="#{bundle.ViewCommentTableTitle_personId}"/>
+                    <h:outputText value="#{bundle.ViewCommentTableLabel_articleiId}"/>
+                    <h:outputText value="#{commentTableController.selected.articleiId}" title="#{bundle.ViewCommentTableTitle_articleiId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{commentTableController.destroyAndView}" value="#{bundle.ViewCommentTableDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCommentTableEditLink}"/>
+                <br />
+                <h:commandLink action="#{commentTableController.prepareCreate}" value="#{bundle.ViewCommentTableCreateLink}" />
+                <br />
+                <h:commandLink action="#{commentTableController.prepareList}" value="#{bundle.ViewCommentTableShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCommentTableIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewArticlecategoryTableTitle}"></h:outputText>
+        </ui:define>
+        <f:view>
+            <h:head>
+                <f:metadata>
+                    <f:viewAction action="#{userController.isLoggedInAsUserForwardHome()}" />
+                </f:metadata>
+            </h:head>
+        </f:view>
+        <ui:define name="body">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewArticlecategoryTableLabel_articlecategoryId}"/>
+                    <h:outputText value="#{categoryController.selected.articlecategoryId}" title="#{bundle.ViewArticlecategoryTableTitle_articlecategoryId}"/>
+                    <h:outputText value="#{bundle.ViewArticlecategoryTableLabel_articlecategoryName}"/>
+                    <h:outputText value="#{categoryController.selected.articlecategoryName}" title="#{bundle.ViewArticlecategoryTableTitle_articlecategoryName}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{categoryController.destroyAndView}" value="#{bundle.ViewArticlecategoryTableDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewArticlecategoryTableEditLink}"/>
+                <br />
+                <h:commandLink action="#{categoryController.prepareCreate}" value="#{bundle.ViewArticlecategoryTableCreateLink}" />
+                <br />
+                <h:commandLink action="#{categoryController.prepareList}" value="#{bundle.ViewArticlecategoryTableShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewArticlecategoryTableIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

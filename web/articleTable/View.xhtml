@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewArticleTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articleiId}"/>
+                    <h:outputText value="#{articleTableController.selected.articleiId}" title="#{bundle.ViewArticleTableTitle_articleiId}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articleTitle}"/>
+                    <h:outputText value="#{articleTableController.selected.articleTitle}" title="#{bundle.ViewArticleTableTitle_articleTitle}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articlePreface}"/>
+                    <h:outputText value="#{articleTableController.selected.articlePreface}" title="#{bundle.ViewArticleTableTitle_articlePreface}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articleBody}"/>
+                    <h:outputText value="#{articleTableController.selected.articleBody}" title="#{bundle.ViewArticleTableTitle_articleBody}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_views}"/>
+                    <h:outputText value="#{articleTableController.selected.views}" title="#{bundle.ViewArticleTableTitle_views}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_imageMain}"/>
+                    <p:graphicImage value="/image?id=#{articleTableController.selected.imageMain}"></p:graphicImage>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_image}"/>
+                    <h:outputText value="#{articleTableController.selected.image}" title="#{bundle.ViewArticleTableTitle_image}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_dateCreated}"/>
+                    <h:outputText value="#{articleTableController.selected.dateCreated}" title="#{bundle.ViewArticleTableTitle_dateCreated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_dateUpdated}"/>
+                    <h:outputText value="#{articleTableController.selected.dateUpdated}" title="#{bundle.ViewArticleTableTitle_dateUpdated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_personId}"/>
+                    <h:outputText value="#{articleTableController.selected.personId}" title="#{bundle.ViewArticleTableTitle_personId}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articlecategoryId}"/>
+                    <h:outputText value="#{articleTableController.selected.articlecategoryId}" title="#{bundle.ViewArticleTableTitle_articlecategoryId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{articleTableController.destroyAndView}" value="#{bundle.ViewArticleTableDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewArticleTableEditLink}"/>
+                <br />
+                <h:commandLink action="#{articleTableController.prepareCreate}" value="#{bundle.ViewArticleTableCreateLink}" />
+                <br />
+                <h:commandLink action="#{articleTableController.prepareList}" value="#{bundle.ViewArticleTableShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewArticleTableIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>for validation only</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <composite:interface>
+            <composite:attribute name="data" />
+        </composite:interface>
+
+        <composite:implementation>
+            <!--display article after clicking on side menu-->
+            <h:panelGrid columns="1" columnClasses="articleColumn" headerClass="main-content" cellpadding="0" cellspacing="0" border="0">
+                <h:outputLabel style="color: white; background-color: #0073a4; font-weight: bold" value="#{cc.attrs.data.articleTitle}" />
+                <h:column id="articleColumn" class="articleColumn">
+                    <h:graphicImage width="50" height="50" library="img" name="mwaura.jpg" style="margin-right: 20px;"/>
+                    <h:outputLabel class="postedByLbl" value="by" style="margin-right: 10px; font-family: serif; font-size: small;" />
+                    <h:outputLabel value="#{cc.attrs.data.personId.firstname}" style="margin-right: 5px; font-family: serif; font-size: small;" />
+                    <h:outputLabel value="#{cc.attrs.data.personId.lastname}" style="margin-right: 20px; font-family: serif; font-size: small;" />
+                    <h:outputLabel value="#{cc.attrs.data.dateCreated}" style="font-family: serif; font-size: small;">
+                        <f:convertDateTime type="date" pattern="MMMM dd, YYYY"/>
+                    </h:outputLabel>
+                    <h:graphicImage class="imageClass" value="/image?id=#{cc.attrs.data.articleiId}" />
+                    <br/>
+                    <h:outputText id="articleBodyText" value="#{cc.attrs.data.articleBody}" class="urlFromText" styleClass="preformatted">
+                    </h:outputText>
+                </h:column>
+            </h:panelGrid>
+
+            <br/>
+            <!--display comments to user-->
+            <h:form id="commentForm">
+                <ui:repeat varStatus="status" value="#{articleController.articleComments}" var="comment">
+                    <h:panelGrid columns="2" style="width:100%" columnClasses="avatar,commentBody">
+                        <h:column class="avatar">
+                            <h:graphicImage width="50" height="50" library="img" name="dove.jpg"/>
+                        </h:column>
+                        <h:column class="commentBodyCol">
+                            <p:outputPanel>
+                                <h:outputText value="#{comment.personId.firstname}" style="font-weight: bold; margin-right: 20px;"/>
+                                <h:outputText value="#{comment.dateCreated}" style="font-weight: bold">
+                                    <f:convertDateTime type="date" pattern="MMMM dd, YYYY"/>
+                                </h:outputText>                                    
+                                <h:panelGrid columnClasses="commentBody" columns="1" cellpadding="2">
+                                    <h:outputText value="#{comment.commentBody}" style="margin-top: 20px;"> 
+                                               </h:outputText>
+                                </h:panelGrid>
+                            </p:outputPanel>
+                        </h:column>
+                    </h:panelGrid>
+                    <hr />
+                </ui:repeat>
+            </h:form>
+        </composite:implementation>
+    </body>
+</html>

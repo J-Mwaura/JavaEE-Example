@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText id="ExplanationToUserWhenEditing" value="#{bundle.ExplanationToUserWhenEditing}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form enctype="multipart/form-data">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="" for="username" />
+                    <h:outputText id="username" value="#{userController.authenticatedUser.email}" />
+                    <h:outputLabel value="#{bundle.EditPersonLabel_firstname}" for="firstname" />
+                    <h:inputText id="firstname" value="#{userController.authenticatedUser.firstname}" required="true" requiredMessage="#{bundle.EditPersonRequiredMessage_firstname}"/>
+                    <h:outputLabel value="#{bundle.EditPersonLabel_lastname}" for="lastname" />
+                    <h:inputText id="lastname" value="#{userController.authenticatedUser.lastname}" />
+                    <h:outputLabel value="#{bundle.EditPersonLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{userController.authenticatedUser.address}" />
+                    <h:outputLabel value="#{bundle.EditPersonLabel_city}" for="city" />
+                    <h:inputText id="city" value="#{userController.authenticatedUser.city}" />
+                </h:panelGrid>
+                <br/>
+                <h:commandLink action="#{userController.goToIndexPage()}" value="Cancel" style="margin-right: 10px;"/>
+                <h:commandLink action="#{userController.goToUserInforEditInput()}" value="#{bundle.ContinueToSaveInformation}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

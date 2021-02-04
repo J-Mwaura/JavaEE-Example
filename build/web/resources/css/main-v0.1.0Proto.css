@@ -1,0 +1,434 @@
+/*
+Code snippet by maridlcrmn for Bootsnipp.com
+Follow me on Twitter @maridlcrmn
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('http://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/stage-13/fonts/icomoon.eot');
+	src:url('http://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/stage-13/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('http://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/stage-13/fonts/icomoon.woff') format('woff'),
+		url('http://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/stage-13/fonts/icomoon.ttf') format('truetype'),
+		url('http://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/stage-13/fonts/icomoon.svg#icomoon') format('svg');
+}
+
+#header{display:block}
+    padding {margin:0;padding:0}
+
+.body{
+    width: 100%;
+    height: 100%;
+}
+
+.lightBlue { background-color: #edf8f7 }
+
+.white { background-color: #fff }
+.screen {
+                font-size: 0.5em;
+                margin: 0;
+                background-color: red;
+                position: absolute;
+                width: 100%; /* BenM mentioned this in answer*/                  
+                height: 100%; /* take full browser height */
+                left: 0;
+                top: 0;
+            }
+            
+            h1{
+                color: #0033ff;
+            }
+            
+            h3{
+                color: #0033ff;
+            }
+
+  .screen .main {
+                width: 100%; /* <--now this takes full browser dimension  */
+                height: 100%; /* <--now this takes full browser dimension  */
+            }
+           #sidebar{
+                margin: 0;
+                margin-left: 20px;
+                margin-top: 10px;
+                padding-top: 10px;
+                position: absolute;
+               
+                border: 20px;
+                border-color: #00aced;
+            } 
+            .seperatorDiv{
+                height: 5px;
+            }
+
+#content{
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    top: 5%;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 150px;
+    width: 90%;
+    height: 100%;
+    clear: both;
+}
+
+p{
+    font-size: 16px;
+}
+
+.a2a_kit a2a_kit_size_32 a2a_floating_style 
+                     a2a_vertical_style ul li {
+  list-style-type: none;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+
+.nguzoLogo{
+    padding-right: 10px;
+    height: 10px;
+    width: 10px;
+}
+
+.col-sm-4.downloads{
+    font-size: 14px;
+    color: #000066;
+    text-decoration: underline; 
+}
+.dropdown-menu.devider{
+    height: 1px;
+  margin: 9px 0;
+  overflow: auto;
+  background-color: #000066;
+}
+
+/*text area design*/
+/*div*/
+
+.spacer
+{
+    width: 100%;
+    height: 50px;
+}
+
+/*social icons */
+.social-icons{
+    background: #0073a4;
+}
+.social-icons a {
+    display: inline;
+    height: 100px;
+    padding: 0;
+}
+.social-icons a {
+    text-decoration: none;
+}
+.fa-facebook {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #00aced;
+    color: #ffffff;
+}
+.fa-facebook:hover {
+    background-color: #3d5b99;
+}
+.fa-twitter {
+    padding:10px 12px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #0066ff;
+    color: #ffffff;
+}
+.fa-twitter:hover {
+    background-color: #00aced;
+}
+.fa-rss {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-rss:hover {
+    background-color: #eb8231;
+}
+.fa-youtube {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-youtube:hover {
+    background-color: #e64a41;
+}
+.fa-linkedin {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #0033ff;
+    color: #ffffff;
+}
+.fa-linkedin:hover {
+    background-color: #0033ff;
+}
+.fa-google-plus {
+    padding:10px 9px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+}
+.fa-google-plus:hover {
+    background-color: #e25714;
+}
+
+
+/*
+ * Yellow navbar style
+ */
+#navbar-customColor.navbar-default { /* #99ff00 - #ccff00 */
+    font-size: 20px;
+    background-color: rgba(153, 255, 0, 1);
+    background: -webkit-linear-gradient(top, rgba(204, 255, 0, 1) 0%, rgba(153, 255, 0, 1) 100%);
+    background: linear-gradient(to bottom, rgba(204, 255, 0, 1) 0%, rgba(153, 255, 0, 1) 100%);
+    border: 0px;
+    border-radius: 0;
+    margin-top: 0px;
+}
+.navbar-nav.dropdown-menu.third-level.fourth-level{
+    
+    top: 0px;
+    left:170px;
+    display: none;
+    visibility:hidden;
+    border: 1px solid #DDDDDD;
+}
+#navbar-customColor.navbar-default .navbar-nav.dropdown-toggle{
+    
+}
+
+#navbar-customColor.navbar-default .navbar-nav>li>a:hover,
+#navbar-customColor.navbar-default .navbar-nav>li>a:focus,
+#navbar-customColor.navbar-default .navbar-nav>li>ul>li>a:hover, 
+#navbar-customColor.navbar-default .navbar-nav>li>ul>li>a:focus, 
+#navbar-customColor.navbar-default .navbar-nav>.active>a, /*active is home class*/
+#navbar-customColor.navbar-default .navbar-nav>.active>a:hover,
+#navbar-customColor.navbar-default .navbar-nav>.active>a:focus { 
+    color: #00aced;
+    background-color: rgba(255, 255, 255, 1);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+#sidebar-customColor, #column-customColor {
+	background-color: #99ff00;
+}
+#navbar-customColor.navbar-default .navbar-toggle {
+    border-color: #99ff00;
+}
+#navbar-customColor.navbar-default .navbar-toggle:hover,
+#navbar-customColor.navbar-default .navbar-toggle:focus {
+    background-color: #ccff00;
+}
+#customColor-botom.navbar-default .navbar-nav>li>a,
+#customColor-botom.navbar-default.navbar-nav>li>ul>li>a{color: #ffffff;}
+#navbar-customColor.navbar-default .navbar-nav>li>a,
+#navbar-customColor.navbar-default .navbar-nav>li>ul>li>a, 
+#navbar-customColor.navbar-default .navbar-brand {
+    color: #000066 
+}
+
+#navbar-customColor.navbar-default .navbar-toggle .icon-bar,
+#navbar-customColor.navbar-default .navbar-toggle:hover .icon-bar,
+#navbar-customColor.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #00aced; 
+}
+/*Hamburger animation*/
+.navbar-toggle {
+  border: none;
+  background: transparent !important;
+}
+.navbar-toggle:hover {
+  background: transparent !important;
+}
+.navbar-toggle .icon-bar {
+  width: 25px;
+  height: 3px;
+  transition: all 0.2s;
+}
+.navbar-toggle .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+.navbar-toggle .middle-bar {
+  opacity: 0;
+}
+.navbar-toggle .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+.navbar-toggle.collapsed .top-bar {
+  transform: rotate(0deg);
+}
+.navbar-toggle.collapsed .middle-bar {
+  opacity: 1;
+}
+.navbar-toggle.collapsed .bottom-bar {
+  transform: rotate(0deg);
+}
+
+/*Hamburger animation end*/
+
+.navbar-bran{
+    position: relative;
+}
+
+.container-fluid2{
+    margin-left: 190px;
+    margin-top: 5px;
+}
+
+/*donate button*/
+.donate-button{
+    background-color:#ffffff;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#99ff00;
+	font-family:Arial;
+	font-size:14px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.donate-button:hover{
+    background-color: #99ff00;
+}
+.donate-button:active{
+    position: relative;
+}
+/*end of donate button*/
+
+
+/*footer
+#customColor-botom{
+    background-color:#73AD21;
+}
+footer .navbar-collapse.in {
+    bottom: 0;
+    position: fixed;
+    background-color:#000;
+  	width: 100%;
+        margin: 0;
+        padding: 0.3em 0;
+}
+
+@media only screen and (max-width: 768px) { /*will fit in PD screen*/
+ /* footer .navbar-collapse {
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+  }
+}*/
+/*footer*/
+
+/*dropdown menu design*/
+
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: 'Oswald', sans-serif;
+	}
+	
+	.dropdown-menu {
+		min-width: 200px;
+	}
+	.dropdown-menu.columns-2 {
+		min-width: 400px;
+	}
+	.dropdown-menu.columns-3 {
+		min-width: 600px;
+	}
+	.dropdown-menu li a {
+		padding: 5px 15px;
+		font-weight: 300;
+	}
+	.multi-column-dropdown {
+		list-style: none;
+	}
+	.multi-column-dropdown li a {
+		display: block;
+		clear: both;
+		line-height: 1.428571429;
+		color: #333;
+		white-space: normal;
+	}
+	.multi-column-dropdown li a:hover {
+		text-decoration: none;
+		color: #262626;
+		background-color: #f5f5f5;
+	}
+        
+        .col-sm-4.downloads{
+            width: 100px;
+        }
+	
+	@media (max-width: 767px) {
+		.dropdown-menu.multi-column {
+			min-width: 240px !important;
+			overflow-x: hidden;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.navbar-invers {
+			width: 90%;
+			margin: 50px auto;
+			padding: 10px;
+		}
+	}
+        
+/*dropdown menu design*/       
+
+.imgForm{
+    margin-bottom: 20px;
+}
+#sendBtn{
+    background-color: #18ab29;
+    width: 50px;
+}
+
+.rightSideDiv{
+    margin-left: 60px;
+}
+
+.rightSideDiv ul li{
+    font-size: larger;
+    list-style-type: none;
+}

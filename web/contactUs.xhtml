@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+    </h:head>
+    <h:body>
+        <ui:composition template="/WEB-INF/template/commonPrototype/commonLayout.xhtml">
+            <ui:define name="content">
+                <div id="container">
+                    <p class="heading">Leave us a message</p>
+        <h:form>
+            <h:panelGrid columns="2">
+                
+                <!--To:
+                <h:panelGroup>
+                    <h:inputText size="15" id="name"
+                                 value="#{clientBean.recipient}"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <h:message for="name" style="color:red"/>
+                </h:panelGroup>-->
+                
+                Subject:
+                <h:panelGroup class="input">
+                    <h:inputText size="30" id="subject"
+                                 value="#{clientBean.subject}"
+                                 required="true"
+                                 requiredMessage="Required"/>
+                    <h:message for="subject" style="color:red"/>
+                    <div id="fullname_warn" ></div>
+                </h:panelGroup>
+                
+                Message:
+                <h:panelGroup class="input">
+                    <h:inputTextarea cols="40" rows="10" id="message"
+                                     value="#{clientBean.message}"
+                                     required="true"
+                                     requiredMessage="Required"/>
+                    <h:message for="message" style="color:red"/>
+                </h:panelGroup>
+                <br></br>
+                <h:panelGroup id="panelBtn">
+                    <h:outputText value="#{clientBean.statusMessage}" style="color:red"/>
+                        
+                    <td>
+                        <h:commandButton id="sendBtn" value="Send" action="#{clientBean.send()}"/>
+                    
+                    </td>
+                    <td><h:outputLabel id="blankLbl" style="size: 20px; color: #ffffff;">ddddd</h:outputLabel></td>
+                    <td>
+                        <h:commandButton style="position: relative; right: 0" id="reset" value="Reset" 
+                                         action="#{clientBean.reset()}"/>
+                    </td>
+                </h:panelGroup>
+                
+                    
+               
+            </h:panelGrid>
+        </h:form>
+                    </div>
+                <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript" src="assets/js/jscript.js"></script>
+                </ui:define>
+       </ui:composition>
+    </h:body>
+</html>
+

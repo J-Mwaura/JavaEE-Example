@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCommentstatusTableTitle}"></h:outputText>
+        </ui:define>
+        <f:view>
+            <h:head>
+                <f:metadata>
+                    <f:viewAction action="#{userController.isLoggedInAsUserForwardHome()}" />
+                </f:metadata>
+            </h:head>
+        </f:view>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:outputText escape="false" value="#{bundle.ListCommentstatusTableEmpty}" rendered="#{commentstatusTableController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{commentstatusTableController.items.rowCount > 0}">
+                    <h:outputText value="#{commentstatusTableController.pagination.pageFirstItem + 1}..#{commentstatusTableController.pagination.pageLastItem + 1}/#{commentstatusTableController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{commentstatusTableController.previous}" value="#{bundle.Previous} #{commentstatusTableController.pagination.pageSize}" rendered="#{commentstatusTableController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{commentstatusTableController.next}" value="#{bundle.Next} #{commentstatusTableController.pagination.pageSize}" rendered="#{commentstatusTableController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{commentstatusTableController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommentstatusTableTitle_commentstatusId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.commentstatusId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommentstatusTableTitle_commentStatus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.commentStatus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCommentstatusTableTitle_commentDescription}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.commentDescription}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{commentstatusTableController.prepareView}" value="#{bundle.ListCommentstatusTableViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{commentstatusTableController.prepareEdit}" value="#{bundle.ListCommentstatusTableEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{commentstatusTableController.destroy}" value="#{bundle.ListCommentstatusTableDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{commentstatusTableController.prepareCreate}" value="#{bundle.ListCommentstatusTableCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCommentstatusTableIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

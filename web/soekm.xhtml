@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      template="/WEB-INF/template/commonPrototype_ML/commonLayout.xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition template="/WEB-INF/template/commonPrototype_ML/commonLayout.xhtml">
+        <ui:define name="content">
+            <div class="videoIndex">
+                <video  src="videos/SampleVideo.mp4" autoplay="true" loop="loop" 
+                        controls="true"> </video>
+            </div>
+            <div class="arrangeBoxes">
+                <div class="leftIndex">
+                    <div class="ribbon">
+                        <h2><span>Our Team of Staff</span></h2>
+                    </div>
+                    <div class="contactUs">
+                        <h:form class="contactUsForm">
+                            <h:panelGrid class="contactUsPnl" columns="1">
+                                <h:inputText id="email" class="email"
+                                             value="#{clientBean.email}"
+                                             style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}"
+                                             required="true"
+                                             requiredMessage="#{bundle.UserNameRequired}"
+                                             a:placeholder="Email"
+                                             validatorMessage="Invalid email format" 
+                                             onchange="required(this)" size="40">
+                                    <f:validateRegex
+                                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </h:inputText>
+
+
+                                <h:inputText class="subject"
+                                             value="#{clientBean.subject}" 
+                                             style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}"
+                                             required="true"
+                                             requiredMessage="Required"
+                                             a:placeholder="Subject"/>
+
+
+                                    <h:inputTextarea rows="7" class="message"
+                                                     value="#{clientBean.message}"
+                                                     style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}"
+                                                     required="true"
+                                                     requiredMessage="Required"
+                                                     a:placeholder="NB. This will be deleted"/>
+                                    <td>
+                                        <h:commandButton id="sendBtn" value="Send" action="#{clientBean.send()}"/>
+
+                                    </td>
+
+                                    <h:panelGroup id="panelBtn">
+                                        <p:message for="email" />
+                                        <h:outputText value="#{clientBean.statusMessage}" style="color:red"/>
+
+                                    </h:panelGroup>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                    <!-- <article>
+                         <p class="preformattedLeft">We aim to find our staff a role that suits them best.
+                             First Rate has permanent, part time as well as contract 
+                             jobs. Talk to us and we will find you a job near your home.</p>
+                     </article>-->
+                </div>
+                <div class="centerIndex">
+                    <div class="ribbon">
+                        <h2><span>Our Expertise</span></h2>
+                    </div>
+                    <article>
+                        <p class="preformatted">We create solutions that help all types of business.
+                        </p>
+                        <p class="noteBetter">Provide material for this sections please </p>
+                    </article>
+                </div>
+                <div class="rightIndex">
+                    <div class="ribbon">
+                        <h2><span>Contact Us</span></h2>
+                    </div>
+                    <div class="contactUs">
+                        <h:form class="contactUsForm">
+                            <h:panelGrid class="contactUsPnl" columns="1">
+                                <h:inputText id="email" class="email"
+                                             value="#{clientBean.email}"
+                                             style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}"
+                                             required="true"
+                                             requiredMessage="#{bundle.UserNameRequired}"
+                                             a:placeholder="Email"
+                                             validatorMessage="Invalid email format" 
+                                             onchange="required(this)" size="40">
+                                    <f:validateRegex
+                                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </h:inputText>
+
+
+                                <h:inputText id="subject" class="subject"
+                                             value="#{clientBean.subject}" 
+                                             style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}"
+                                             required="true"
+                                             requiredMessage="Required"
+                                             a:placeholder="Subject"/>
+
+
+                                    <h:inputTextarea rows="7" id="message" class="message"
+                                                     value="#{clientBean.message}"
+                                                     style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}"
+                                                     required="true"
+                                                     requiredMessage="Required"
+                                                     a:placeholder="Message"/>
+                                    <td>
+                                        <h:commandButton id="sendBtn" value="Send" action="#{clientBean.send()}"/>
+
+                                    </td>
+
+                                    <h:panelGroup id="panelBtn">
+                                        <p:message for="email" />
+                                        <h:outputText value="#{clientBean.statusMessage}" style="color:red"/>
+
+                                    </h:panelGroup>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            <div class="divAboveFooter">
+                <p>here</p>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div id="crestePersonDiv">
+                <h:form id="upForm" enctype="multipart/form-data">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreatePersonLabel_firstname}" for="firstname" />
+                        <h:inputText id="firstname" size="15" style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}" value="#{customerController.selected.firstname}" title="#{bundle.CreatePersonTitle_firstname}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_firstname}" >                 
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreatePersonLabel_lastname}" for="lastname" />
+                        <h:inputText id="lastname" size="15" value="#{customerController.selected.lastname}" title="#{bundle.CreatePersonTitle_lastname}" required="false" />
+                        <h:outputLabel value="#{bundle.CreatePersonLabel_email}" for="email" styleClass="required"/>
+                        <h:inputText id="email" style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}" 
+                                     value="#{customerController.selected.email}" title="#{bundle.CreatePersonTitle_email}" 
+                                     required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_email}" 
+                                     validatorMessage="Invalid email format" onchange="required(this)" 
+                                     a:placeholder="Enter a valid email address" size="15">
+                            <f:validateRegex
+                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                        </h:inputText>
+                        <p:watermark for="email" value="Email Address *" />
+                        <p:message for="email" />
+                        <h:outputLabel value="#{bundle.CreatePersonLabel_address}" for="address" />
+                        <h:inputText id="address" size="15" value="#{customerController.selected.address}" title="#{bundle.CreatePersonTitle_address}" required="false" />
+                        <h:outputLabel value="#{bundle.CreatePersonLabel_city}" for="city" />
+                        <h:inputText id="city" size="15" value="#{customerController.selected.city}" title="#{bundle.CreatePersonTitle_city}" required="false" />
+                        <h:outputLabel value="#{bundle.CreatePersonLabel_password}" for="password" styleClass="required"/>
+                        <h:inputSecret id="password" size="15" style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}" 
+                                       value="#{customerController.selected.password}" title="#{bundle.CreatePersonTitle_password}" 
+                                       required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_password}" maxlength="12"/>
+                        <h:outputLabel value="#{bundle.CreateUser_confirmPassword}" for="password_confirm" styleClass="required"/>
+                        <h:inputSecret id="password_confirm" size="15" style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}"
+                                       value="#{userController.passwordConfirm}"
+                                       required="true"
+                                       requiredMessage="Passwords don't match"
+                                       maxlength="12"
+                                       validator="#{userController.validatePassword}">
+                            <f:validateLength minimum="6" />
+                        </h:inputSecret>
+                        <p:watermark for="password_confirm" value="password *" />
+                        <p:message for="password_confirm" />
+                    </h:panelGrid>
+                    <h:commandButton value="create"
+                                     action="#{customerController.create()}" onclick="return validateUpload()">
+                        <f:ajax execute="file" render="@all"/>
+                    </h:commandButton>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreatePersonIndexLink}"/>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

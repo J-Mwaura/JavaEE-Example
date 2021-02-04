@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </meta>
+        <h:outputStylesheet name="custom-header.css" library="css"></h:outputStylesheet>
+        <h:outputStylesheet name="custom-footer.css" library="css"></h:outputStylesheet>
+        <h:outputStylesheet name="socials.css" library="css"></h:outputStylesheet>
+        <h:outputStylesheet name="popup-login.css" library="css"></h:outputStylesheet>
+        <h:outputStylesheet name="cookieconsent.min.css" library="css"></h:outputStylesheet>
+        <h:outputScript library="js" name="inputBlank.js" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+        <h:outputScript library="js" name="inputBlank.js"/>
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="detectUrl.js"/>
+        <h:outputScript library="js" name="cookieconsent.min.js"/>
+        <script>
+            window.addEventListener("load", function () {
+                window.cookieconsent.initialise({
+                    "palette": {
+                        "popup": {
+                            "background": "#ffffff"
+                        },
+                        "button": {
+                            "background": "#0038f0"
+                        }
+                    }
+                })
+            });
+        </script>
+        <link  rel="shortcut icon" href="images/mwaura.jpg"></link>
+
+        <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    </h:head>
+
+    <h:body>
+
+
+        <div id="page">
+
+
+            <div id="header">
+                <ui:insert name="header" >
+                    <ui:include src="/WEB-INF/template/common/commonHeader.xhtml" />
+                </ui:insert>
+            </div>
+            <br/>
+            <p></p>
+            <br/>
+            <div id="content">
+                <!--<p:growl id="messageGrowl" showDetail="true" sticky="false">
+                </p:growl>-->
+                <h1>
+                    <ui:insert name="title">Default Title</ui:insert>
+                </h1>
+                <h:panelGroup id="messagePanel" layout="block" style=" ">
+                    <h:outputLink value="#" rendered="#{! empty facesContext.maximumSeverity}" 
+                                  onclick="document.getElementById('messagePanel').style.display = 'none';" style="color:darkgreen; float: left">(x)</h:outputLink>
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table" />
+                </h:panelGroup>
+
+                <ui:insert name="body" >
+                    <ui:include src="/WEB-INF/template/common/commonContent.xhtml" />
+                </ui:insert>
+            </div>
+
+            <div id="footer">
+                <ui:insert name="footer" >
+                    <ui:include src="/WEB-INF/template/common/commonFooter.xhtml" />
+                </ui:insert>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

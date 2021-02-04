@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+
+    Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
+
+    You may not modify, use, reproduce, or distribute this software except in
+    compliance with  the terms of the License at:
+    http://java.net/projects/javaeetutorial/pages/BerkeleyLicense
+
+-->
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="/WEB-INF/template/common/commonLayout.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    <ui:define name="title">
+        Login
+    </ui:define>
+
+    <f:view>
+        <h:head>
+            <f:metadata>
+                <f:viewParam name="userId" value="#{verifyRegisteredEmailHash.userId}"/>
+                <f:viewParam name="scope" value="#{verifyRegisteredEmailHash.scope}"/>
+                <f:viewParam name="hash" value="#{verifyRegisteredEmailHash.hash}"/>
+                <f:viewAction action="#{verifyRegisteredEmailHash.verifyEmail()}"/>
+            </f:metadata>
+        </h:head>
+    </f:view>
+
+    <ui:define name="body">
+        <div class="seperatorDivLogin"> 
+            <br/>
+        </div>
+
+        <h:form id="loginForm">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="#{bundle.Username_Label}" for="username" />
+                <h:inputText id="username" value="#{userController.username}" style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}" required="true" requiredMessage="#{bundle.UserNameRequired}"
+                             validatorMessage="Invalid email format" onchange="required(this)" size="40" a:placeholder="Enter your email">
+                    <f:validateRegex
+                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                </h:inputText>
+                <p:watermark for="username" value="Email Address *" />
+                <p:message for="username" />
+
+                <h:outputLabel value="#{bundle.Password_Label}" for="password" />
+                <h:inputSecret id="password" value="#{userController.password}" 
+                               style="#{ component.valid ? 'border-color:black;' : 'border-color:red;'}" required="true" requiredMessage="#{bundle.PasswordRequired}" validatorMessage="password too long" size="40" a:placeholder="Enter password">
+                </h:inputSecret>
+                <p:watermark for="password" value="Pssword *" />
+                <p:message for="password" />
+                <h:commandButton action="#{userController.login}" value="#{bundle.Login_label}" rendered="#{!userController.logged}" />
+                <h:commandButton action="#{userController.logout}" value="#{bundle.Topbar_Logout_Label}" rendered="#{userController.logged}" />
+            </h:panelGrid>
+
+        </h:form>
+        <h:form id="newPassordForm">
+            <h:panelGrid columns="2">
+                <h:commandLink action="#{userController.goToChangePasswordPage()}"  value="#{bundle.Go_To_Change_password_Page}"  />
+                <h4><h:commandLink action="#{customerController.goToSignUpPage()}" value="#{bundle.SignUp}" /></h4>                
+
+            </h:panelGrid>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

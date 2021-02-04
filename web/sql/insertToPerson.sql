@@ -1,0 +1,3 @@
+INSERT INTO PERSON (`ID`, FIRSTNAME,LASTNAME,EMAIL,ADDRESS,CITY,PASSWORD,ENABLED,SECRET,EXPIRYDATE,TOKEN,EMAIL_VERIFICATION_ATTEMPTS,EMAIL_VERIFICATION_HASH,STATUS,DTYPE,DATE_REGISTERED,AVATAR,IMAGE) 
+VALUES (1, 'Duffy','Exampler','duffy@soekm.com','Example street','London','81dc9bdb52d04dc20036dbd8313ed055',1,'',NULL,'',1,'','active','Administrator',NULL,'',''),
+	   (2, 'Joyce','Exampler','joyce@soekm.com','Example street','Edinburgh','81dc9bdb52d04dc20036dbd8313ed055',1,'',NULL,'',1,'','active','User',NULL,'','');

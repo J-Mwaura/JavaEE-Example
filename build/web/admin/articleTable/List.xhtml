@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListArticleTableTitle}"></h:outputText>
+        </ui:define>
+        <f:view>
+            <h:head>
+                <f:metadata>
+                    <f:viewAction action="#{userController.isLoggedInAsUserForwardHome()}" />
+                </f:metadata>
+            </h:head>
+        </f:view>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:outputText escape="false" value="#{bundle.ListArticleTableEmpty}" rendered="#{articleController.items.rowCount == 0}"/>
+                <h:panelGroup>
+                    <h:outputText value="#{articleController.pagination.pageFirstItem + 1}..#{articleController.pagination.pageLastItem + 1}/#{articleController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{articleController.previous}" value="#{bundle.Previous} #{articleController.pagination.pageSize}" rendered="#{articleController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{articleController.next}" value="#{bundle.Next} #{articleController.pagination.pageSize}" rendered="#{articleController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{articleController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <!--<h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_articleiId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.articleiId}"/>
+                        </h:column>-->
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_articleTitle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.articleTitle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_articlePreface}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.articlePreface}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_articleBody}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.articleBody}"/>
+                        </h:column>
+                        <!--<h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_views}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.views}"/>
+                        </h:column>-->
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_imageMain}"/>
+                            </f:facet>
+                            <h:graphicImage class="imageClass" value="/image?id=#{item.articleiId}" height="50" width="50" />
+                        </h:column>
+                        <!--<h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_image}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.image}"/>
+                        </h:column>-->
+                        <!--<h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_dateCreated}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateCreated}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_dateUpdated}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateUpdated}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>-->
+                        <!--<h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_personId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personId}"/>
+                        </h:column>-->
+                        <!--<h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArticleTableTitle_articlecategoryId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.articlecategoryId}"/>
+                        </h:column>-->
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{articleController.prepareView}" value="#{bundle.ListArticleTableViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{articleController.prepareEdit}" value="#{bundle.ListArticleTableEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{articleController.destroy}" value="#{bundle.ListArticleTableDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{articleController.prepareCreate}" value="#{bundle.ListArticleTableCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListArticleTableIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewArticleTableTitle}"></h:outputText>
+        </ui:define>
+        <f:view>
+            <h:head>
+                <f:metadata>
+                    <f:viewAction action="#{userController.isLoggedInAsUserForwardHome()}" />
+                </f:metadata>
+            </h:head>
+        </f:view>
+        <ui:define name="body">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articleiId}"/>
+                    <h:outputText value="#{articleController.selected.articleiId}" title="#{bundle.ViewArticleTableTitle_articleiId}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articleTitle}"/>
+                    <h:outputText value="#{articleController.selected.articleTitle}" title="#{bundle.ViewArticleTableTitle_articleTitle}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articlePreface}"/>
+                    <h:outputText value="#{articleController.selected.articlePreface}" title="#{bundle.ViewArticleTableTitle_articlePreface}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articleBody}"/>
+                    <h:outputText value="#{articleController.selected.articleBody}" title="#{bundle.ViewArticleTableTitle_articleBody}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_views}"/>
+                    <h:outputText value="#{articleController.selected.views}" title="#{bundle.ViewArticleTableTitle_views}"/>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ViewArticleTableLabel_imageMain}"/>
+                        </f:facet>
+                        <h:graphicImage class="imageClass" value="/image?id=#{articleController.selected.articleiId}" />
+                    </h:column>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_image}"/>
+                    <h:outputText value="#{articleController.selected.image}" title="#{bundle.ViewArticleTableTitle_image}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_dateCreated}"/>
+                    <h:outputText value="#{articleController.selected.dateCreated}" title="#{bundle.ViewArticleTableTitle_dateCreated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_dateUpdated}"/>
+                    <h:outputText value="#{articleController.selected.dateUpdated}" title="#{bundle.ViewArticleTableTitle_dateUpdated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_personId}"/>
+                    <h:outputText value="#{articleController.selected.personId}" title="#{bundle.ViewArticleTableTitle_personId}"/>
+                    <h:outputText value="#{bundle.ViewArticleTableLabel_articlecategoryId}"/>
+                    <h:outputText value="#{articleController.selected.articlecategoryId}" title="#{bundle.ViewArticleTableTitle_articlecategoryId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{articleController.destroyAndView}" value="#{bundle.ViewArticleTableDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewArticleTableEditLink}"/>
+                <br />
+                <h:commandLink action="#{articleController.prepareCreate}" value="#{bundle.ViewArticleTableCreateLink}" />
+                <br />
+                <h:commandLink action="#{articleController.prepareList}" value="#{bundle.ViewArticleTableShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewArticleTableIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

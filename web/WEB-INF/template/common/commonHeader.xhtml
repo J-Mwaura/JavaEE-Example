@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+
+    <div class="body-wrap">
+        <div class="container">
+            <nav class="navbar navbar-invers" role="navigation"> <!--navbar-inverse disabled-->
+                <nav id="navbar-customColor" class="navbar navbar-default navbar-fixed-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle x collapsed" data-toggle="collapse" 
+                                    data-target="#navbar-collapse-x">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div id="logo">
+                                <a class="nguzoLogo">
+                                  </a>
+                            </div>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="navbar-collapse-x">
+                            <ul class="nav navbar-nav">
+                                <li><h:link outcome="/index" value="Home"></h:link></li>
+                                <li class="dropdown navbar-right">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <p:graphicImage value="#{imageStreamer.image}"
+                                                        height="30" width="30" style="float: left; display: block;">
+                                            <f:param name="id" value="#{userController.authenticatedUser.id}"/>
+                                        </p:graphicImage> <b class="caret"></b>
+                                        <h:form rendered="#{!userController.logged}">
+                                            <p></p>
+                                        </h:form>
+                                    </a>
+                                    <br/>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <h:form rendered="#{userController.logged == false}">
+                                                <h:commandLink action="#{userController.goToLoginPage()}" value="#{bundle.Topbar_Login_Label}"/>
+                                            </h:form>
+                                        </li>
+                                        <li> <h:form rendered="#{userController.logged}">
+                                                <h:commandLink action="#{userController.goToPersonEditProfile()}" >
+                                                        <p:graphicImage value="#{imageStreamer.image}" alt="Account" 
+                                                                        height="30" width="30" style="float: left; display: block;">
+                                                            <f:param name="id" value="#{userController.authenticatedUser.id}"/>
+                                                        </p:graphicImage>
+                                                    </h:commandLink>
+                                                <li><h:outputText value=" #{userController.authenticatedUser.firstname}"  styleClass="user"/></li>
+                                                <li><h:commandLink rendered="#{userController.admin}" action="#{userController.goAdmin}"  value="Administration" /></li>
+                                                <li><h:commandLink action="#{userController.logout}" value="#{bundle.Topbar_Logout_Label}"/></li>
+                                                <li><h:commandLink action="#{userController.goToPersonEdit}" value="#{bundle.Topbar_Account_Label}"/></li>
+                                            </h:form>
+                                        </li>
+
+                                    </ul>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <b class="Nocaret"></b></a>
+                                    </li>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </nav>
+        </div>
+    </div>
+
+</ui:composition>
+
+

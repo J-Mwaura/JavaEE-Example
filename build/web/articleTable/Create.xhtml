@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateArticleTableTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form id="imgForm" enctype="multipart/form-data">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_articleTitle}" for="articleTitle" />
+                    <h:inputText id="articleTitle" value="#{articleTableController.selected.articleTitle}" title="#{bundle.CreateArticleTableTitle_articleTitle}" required="true" requiredMessage="#{bundle.CreateArticleTableRequiredMessage_articleTitle}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_articlePreface}" for="articlePreface" />
+                    <h:inputText id="articlePreface" value="#{articleTableController.selected.articlePreface}" title="#{bundle.CreateArticleTableTitle_articlePreface}" required="true" requiredMessage="#{bundle.CreateArticleTableRequiredMessage_articlePreface}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_articleBody}" for="articleBody" />
+                    <h:inputTextarea rows="4" cols="30" id="articleBody" value="#{articleTableController.selected.articleBody}" title="#{bundle.CreateArticleTableTitle_articleBody}" required="true" requiredMessage="#{bundle.CreateArticleTableRequiredMessage_articleBody}"/>
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_views}" for="views" />
+                    <h:inputText id="views" value="#{articleTableController.selected.views}" title="#{bundle.CreateArticleTableTitle_views}" />
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_image}" for="image" />
+                    <h:inputText id="image" value="#{articleTableController.selected.image}" title="#{bundle.CreateArticleTableTitle_image}" />
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_dateCreated}" for="dateCreated" />
+                    <h:inputText id="dateCreated" value="#{articleTableController.selected.dateCreated}" title="#{bundle.CreateArticleTableTitle_dateCreated}" required="true" requiredMessage="#{bundle.CreateArticleTableRequiredMessage_dateCreated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_dateUpdated}" for="dateUpdated" />
+                    <h:inputText id="dateUpdated" value="#{articleTableController.selected.dateUpdated}" title="#{bundle.CreateArticleTableTitle_dateUpdated}" required="true" requiredMessage="#{bundle.CreateArticleTableRequiredMessage_dateUpdated}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_personId}" for="personId" />
+                    <h:inputText id="personId" value="#{userController.authenticatedUser.id}" title="#{bundle.CreateArticleTableTitle_views}" />
+                    
+                    
+                    <h:outputLabel value="#{bundle.CreateArticleTableLabel_articlecategoryId}" for="articlecategoryId" />
+                    <h:selectOneMenu id="articlecategoryId" value="#{articleTableController.selected.articlecategoryId}" title="#{bundle.CreateArticleTableTitle_articlecategoryId}" required="true" requiredMessage="#{bundle.CreateArticleTableRequiredMessage_articlecategoryId}">
+                        <f:selectItems value="#{categoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                
+                <br/>
+                <h:panelGrid columns="2">
+                <h:outputLabel value="#{bundle.CreateArticleTableLabel_imageMain}" for="file" />
+                        <h:inputFile id="file" value="#{articleTableController.filePart}"/>
+                </h:panelGrid>
+                <br/>
+                <h:commandButton value="create"
+                                 action="#{articleTableController.create()}" onclick="return validateUpload()">
+                            <f:ajax execute="file" render="@all"/>
+                        </h:commandButton>
+                <br />
+                <br />
+                <h:commandLink action="#{articleTableController.prepareList}" value="#{bundle.CreateArticleTableShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateArticleTableIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

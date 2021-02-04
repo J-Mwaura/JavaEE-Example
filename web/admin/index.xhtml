@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:util="http://java.sun.com/jsf/composite/util">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AdminHomeTitle}"></h:outputText>
+        </ui:define>
+        <f:view>
+        <h:head>
+            <f:metadata>
+                <f:viewAction action="#{userController.isLoggedInAsUserForwardHome()}" />
+            </f:metadata>
+        </h:head>
+    </f:view>
+        <ui:define name="body">
+            <h:form>
+                <ul class="adminPage">
+            <li><h2 class="adminPgItem">Manage All Profile Images</h2></li>
+            <li><h:commandLink action="profile/List" value="Profile images" /></li>
+            <li><h2 class="adminPgItem">Manage Articles</h2></li>
+            <li><h:commandLink action="articleTable/List" value="#{bundle.ListArticleTableTitle}" /></li>
+                <li><h:commandLink action="articleTable/Create" value="#{bundle.ListArticleTableCreateLink}" /></li>
+            <li><h2 class="adminPgItem">Manage Article Categorys</h2></li>
+            <li><h:commandLink action="articlecategoryTable/List" value="#{bundle.ListArticlecategoryTableTitle}" /></li>
+            <li><h:commandLink action="articlecategoryTable/Create" value="#{bundle.ListArticlecategoryTableCreateLink}" /></li>
+            <li><h2 class="adminPgItem">Manage Comments</h2></li>
+            <li><h:commandLink action="commentTable/List" value="#{bundle.ListCommentTableTitle}" /></li>
+            <li><h:commandLink action="commentTable/Create" value="#{bundle.ListCommentTableCreateLink}" /></li>
+            <li><h2 class="adminPgItem">Manage Comment Status</h2></li>
+            <li><h:commandLink action="commentstatusTable/List" value="#{bundle.ListCommentstatusTableTitle}" /></li>
+            <li><h:commandLink action="commentstatusTable/Create" value="#{bundle.ListCommentstatusTableCreateLink}" /></li>
+            <li><h2 class="adminPgItem">Manage User Groups</h2></li>
+            <li><h:commandLink action="groups/List" value="#{bundle.ListGroupsTitle}" /></li>
+            <li><h:commandLink action="groups/Create" value="#{bundle.ListGroupsCreateLink}" /></li>
+            <li><h2 class="adminPgItem">Manage All Registered People</h2></li>
+            <li><h:commandLink action="person/List" value="#{bundle.ListPersonTitle}" /></li>
+            <li><h:commandLink action="person/Edit" value="#{bundle.ListPersonCreateLink}" /></li>
+            <li><h2 class="adminPgItem">Manage Administrators</h2></li>
+            <li><h:commandLink action="administrator/List" value="#{bundle.ListAdministratorTitle}" /></li>
+            <li><h:commandLink action="administrator/Create" value="#{bundle.ListAdministratorCreateLink}" /></li>
+        </ul>
+        </h:form>
+    </ui:define>
+    </ui:composition>
+
+
+
+
+
+
+</html>
+

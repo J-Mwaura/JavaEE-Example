@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Welcome #{userController.authenticatedUser.firstname}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:outputText escape="false" value="#{bundle.ListPersonEmpty}" rendered="#{customerController.items.rowCount == 0}"/>
+                <h:panelGroup >
+                    <h:dataTable value="#{userController.authenticatedUser}" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonTitle_firstname}"/>
+                            </f:facet>
+                            <h:outputText value="#{userController.authenticatedUser.firstname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonTitle_lastname}"/>
+                            </f:facet>
+                            <h:outputText value="#{userController.authenticatedUser.lastname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{userController.authenticatedUser.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonTitle_address}"/>
+                            </f:facet>
+                            <h:outputText value="#{userController.authenticatedUser.address}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonTitle_city}"/>
+                            </f:facet>
+                            <h:outputText value="#{userController.authenticatedUser.city}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPersonTitle_avatar}"/>
+                            </f:facet>
+                            <p:graphicImage value="#{imageStreamer.image}" 
+                                            height="50" width="50" style="float: left; display: block;">
+                                <f:param name="id" value="#{userController.authenticatedUser.id}"/>
+                            </p:graphicImage>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{customerController.prepareEdit}" value="#{bundle.ListPersonEditLink}"/>
+                            <h:outputText value=" "/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPersonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCommentstatusTableTitle}"></h:outputText>
+        </ui:define>
+        <f:view>
+            <h:head>
+                <f:metadata>
+                    <f:viewAction action="#{userController.isLoggedInAsUserForwardHome()}" />
+                </f:metadata>
+            </h:head>
+        </f:view>
+        <ui:define name="body">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCommentstatusTableLabel_commentstatusId}"/>
+                    <h:outputText value="#{commentstatusTableController.selected.commentstatusId}" title="#{bundle.ViewCommentstatusTableTitle_commentstatusId}"/>
+                    <h:outputText value="#{bundle.ViewCommentstatusTableLabel_commentStatus}"/>
+                    <h:outputText value="#{commentstatusTableController.selected.commentStatus}" title="#{bundle.ViewCommentstatusTableTitle_commentStatus}"/>
+                    <h:outputText value="#{bundle.ViewCommentstatusTableLabel_commentDescription}"/>
+                    <h:outputText value="#{commentstatusTableController.selected.commentDescription}" title="#{bundle.ViewCommentstatusTableTitle_commentDescription}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{commentstatusTableController.destroyAndView}" value="#{bundle.ViewCommentstatusTableDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCommentstatusTableEditLink}"/>
+                <br />
+                <h:commandLink action="#{commentstatusTableController.prepareCreate}" value="#{bundle.ViewCommentstatusTableCreateLink}" />
+                <br />
+                <h:commandLink action="#{commentstatusTableController.prepareList}" value="#{bundle.ViewCommentstatusTableShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCommentstatusTableIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
